@@ -3,8 +3,8 @@
   module.exports = React.createClass({
     getInitialState: function(){
       return {
-        temp:    0,
-        conditions: ""
+        temp:    "N/A",
+        conditions: "N/A"
       };
     },
     getWeather: function() {
@@ -19,10 +19,12 @@
     render: function() {
       return (
         <div className="weather">
-          <Title name={this.props.zip} />
+          <Title name={"For Area:  "+this.props.zip} />
           <button onClick={this.getWeather}>Get Weather</button>
-          <div class="conditions">{this.state.conditions}</div>
-          <div class="degrees">{this.state.temp} degrees</div>
+          <div className="weather-info">
+            <div class="conditions"><p>Conditions: {this.state.conditions}</p></div>
+            <div class="degrees"><p>{this.state.temp}&#176; F</p></div>
+          </div>
         </div>
       );
     }
